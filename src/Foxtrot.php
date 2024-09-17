@@ -2,11 +2,12 @@
 
 namespace Orwallet\FoxtrotSdk;
 
-use Constants;
 use Exception;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
+use Orwallet\FoxtrotSdk\Constants;
+use Orwallet\FoxtrotSdk\Enums\Currency;
 
 class Foxtrot
 {
@@ -29,35 +30,33 @@ class Foxtrot
         return $this;
     }
 
-    public function validate(array $payload, array $rules, string $type)
+    public function validateDeposit(array $payload)
     {
-        $rules = match ($type) {
-            "DEPOSIT" => [
-                "address" => "nullable|string",
-                "state" => "nullable|string",
-                "city" => "nullable|string",
-                "country" => "nullable|string",
-                "phone" => "nullable|string",
-                "zip_code" => "nullable|string",
-                "first_name" => "nullable|string",
-                "last_name" => "nullable|string",
-                "email" => "nullable|string",
-                "shipping_first_name" => "nullable|string",
-                "shipping_last_name" => "nullable|string",
-                "shipping_email" => "nullable|string",
-                "amount" =>  "required|string",
-                "currency" => "required|string",
-                "card_number" => "required|string",
-                "month" => "required|string",
-                "cvv2" => "required|string",
-                "return_url" => "required|string",
-                "bill_no" => "required|string",
-                "ip" => "required|ip",
-                "notify_url" => "required|url",
-            ],
-        };
+        Validator::make($payload, [
+            "address" => "nullable|string",
+            "state" => "nullable|string",
+            "city" => "nullable|string",
+            "country" => "nullable|string",
+            "phone" => "nullable|string",
+            "zip_code" => "nullable|string",
+            "first_name" => "nullable|string",
+            "last_name" => "nullable|string",
+            "email" => "nullable|string",
+            "shipping_first_name" => "nullable|string",
+            "shipping_last_name" => "nullable|string",
+            "shipping_email" => "nullable|string",
+            "amount" =>  "required|string",
+            "currency" => "required|string",
+            "card_number" => "required|string",
+            "month" => "required|string",
+            "cvv2" => "required|string",
+            "return_url" => "required|string",
+            "bill_no" => "required|string",
+            "ip" => "required|ip",
+            "notify_url" => "required|url",
+        ])->validate();
 
-        Validator::make($payload, $rules)->validate();
+        $this->setPayload($payload);
 
         return $this;
     }
@@ -104,14 +103,14 @@ class Foxtrot
         return $this;
     }
 
-    private function getCurrencyNumber(string $currency): int
+    private function getCurrencyNumber(Currency $currency): int
     {
         return match ($currency) {
-            "USD" => 1,
-            "EUR" => 2,
-            "GBP" => 4,
-            "JPY" => 6,
-            default => throw new Exception("currency is not supported " . $currency),
+            Currency::USD => 1,
+            Currency::EUR => 2,
+            Currency::GBP => 4,
+            Currency::JPY => 6,
+            default => throw new Exception("currency is not supported " . $currency->value),
         };
     }
 

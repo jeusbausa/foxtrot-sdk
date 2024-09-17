@@ -1,5 +1,7 @@
 <?php
 
+namespace Orwallet\FoxtrotSdk;
+
 class Constants
 {
     public const PRODUCT_INFO = "PayStage";
