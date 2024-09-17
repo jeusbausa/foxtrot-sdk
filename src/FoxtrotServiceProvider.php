@@ -1,6 +1,6 @@
 <?php
 
-namespace Orwallet\FoxtrotSdk\Facade;
+namespace Orwallet\FoxtrotSdk;
 
 use Orwallet\FoxtrotSdk\Foxtrot;
 use Illuminate\Support\ServiceProvider;
