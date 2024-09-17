@@ -1,0 +1,30 @@
+{
+    "name": "btph/foxtrot-sdk",
+    "require-dev": {
+        "laravel/framework": "10"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Btph\\FoxtrotSdk\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jeus Bausa",
+            "email": "jeus@orientalwallet.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Btph\\FoxtrotSdk\\FoxtrotServiceProvider"
+            ],
+            "aliases": {
+                "Foxtrot": "Btph\\FoxtrotSdk\\Facade\\Foxtrot"
+            }
+        }
+    }
+}
