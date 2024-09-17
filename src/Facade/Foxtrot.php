@@ -1,6 +1,6 @@
 <?php
 
-namespace Btph\FoxtrotSdk\Facade;
+namespace Orwallet\FoxtrotSdk\Facade;
 
 use Illuminate\Support\Facades\Facade;
 

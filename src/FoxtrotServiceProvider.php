@@ -1,8 +1,8 @@
 <?php
 
-namespace Btph\FoxtrotSdk\Facade;
+namespace Orwallet\FoxtrotSdk\Facade;
 
-use Btph\FoxtrotSdk\Foxtrot;
+use Orwallet\FoxtrotSdk\Foxtrot;
 use Illuminate\Support\ServiceProvider;
 
 class FoxtrotServiceProvider extends ServiceProvider

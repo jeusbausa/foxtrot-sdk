@@ -1,6 +1,6 @@
 <?php
 
-namespace Btph\FoxtrotSdk;
+namespace Orwallet\FoxtrotSdk;
 
 use Constants;
 use Exception;

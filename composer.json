@@ -1,12 +1,12 @@
 {
-    "name": "btph/foxtrot-sdk",
+    "name": "orwallet/foxtrot-sdk",
     "require-dev": {
         "laravel/framework": "10"
     },
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Btph\\FoxtrotSdk\\": "src/"
+            "Orwallet\\FoxtrotSdk\\": "src/"
         }
     },
     "authors": [
@@ -20,10 +20,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Btph\\FoxtrotSdk\\FoxtrotServiceProvider"
+                "Orwallet\\FoxtrotSdk\\FoxtrotServiceProvider"
             ],
             "aliases": {
-                "Foxtrot": "Btph\\FoxtrotSdk\\Facade\\Foxtrot"
+                "Foxtrot": "Orwallet\\FoxtrotSdk\\Facade\\Foxtrot"
             }
         }
     }
