@@ -9,6 +9,6 @@ class FoxtrotServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        return $this->app->bind("foxtrot-sdk", fn(mixed $param) => new Foxtrot($param));
+        return $this->app->bind("foxtrot-sdk", fn() => new Foxtrot());
     }
 }
