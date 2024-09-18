@@ -13,10 +13,32 @@ use Orwallet\FoxtrotSdk\Exception\FoxtrotSolutionException;
 
 class Foxtrot
 {
+    /**
+     * The collection of vaults
+     *
+     * @var  Illuminate\Support\Collection
+     */
     protected Collection $vault;
+
+    /**
+     * The custom http headers being set
+     *
+     * @var array
+     */
     private array $headers;
+
+    /**
+     * The request payload being set
+     *
+     * @var array
+     */
     private array $payload;
 
+    /**
+     * Create a new foxtrot instance.
+     *
+     * @return void
+     */
     public function __construct()
     {
         $this->headers = [];
@@ -151,7 +173,7 @@ class Foxtrot
      * @param array $payload
      * @return self
      */
-    public function setRefundPayload(array $payload): self
+    private function setRefundPayload(array $payload): self
     {
         $payload = collect($payload);
 
