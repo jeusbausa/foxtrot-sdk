@@ -274,6 +274,7 @@ class Foxtrot
 
     /**
      * Get a currency number based on a currency enums
+     *
      * @param string $currency
      * @return init
      */
@@ -290,6 +291,7 @@ class Foxtrot
 
     /**
      * Verify signature based on vault and transaction
+     *
      * @param string $transaction_number
      * @param string $currency
      * @param string $credit_amount
