@@ -20,7 +20,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Orwallet\\FoxtrotSdk\\FoxtrotServiceProvider"
+                "Orwallet\\FoxtrotSdk\\ServiceProvider\\FoxtrotServiceProvider"
             ],
             "aliases": {
                 "Foxtrot": "Orwallet\\FoxtrotSdk\\Facade\\Foxtrot"
