@@ -265,7 +265,7 @@ class Foxtrot
      */
     private function http(): PendingRequest
     {
-        throw_if(is_null($this->vault), Exception::class, "[Foxtrot] vault is not set.");
+        throw_if($this->vault->isEmpty(), Exception::class, "[Foxtrot] vault is not set.");
 
         return Http::withHeaders($this->headers)->asForm();
     }
