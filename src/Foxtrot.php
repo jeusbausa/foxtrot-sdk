@@ -270,17 +270,17 @@ class Foxtrot
 
     /**
      * Get a currency number based on a currency enums
-     * @param Currency $currency
+     * @param string $currency
      * @return init
      */
-    private function getCurrencyNumber(Currency $currency): int
+    private function getCurrencyNumber(string $currency): int
     {
         return match ($currency) {
-            Currency::USD => 1,
-            Currency::EUR => 2,
-            Currency::GBP => 4,
-            Currency::JPY => 6,
-            default => throw new Exception("currency is not supported " . $currency->value),
+            Currency::USD->value => 1,
+            Currency::EUR->value => 2,
+            Currency::GBP->value => 4,
+            Currency::JPY->value => 6,
+            default => throw new Exception("currency is not supported " . $currency),
         };
     }
 
