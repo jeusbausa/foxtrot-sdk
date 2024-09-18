@@ -1,12 +1,16 @@
 {
     "name": "orwallet/foxtrot-sdk",
     "require-dev": {
-        "laravel/framework": "10"
+        "laravel/framework": "^10.0",
+        "laravel/pint": "^1.0",
+        "orchestra/testbench": "^8.0",
+        "pestphp/pest": "^2.16"
     },
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Orwallet\\FoxtrotSdk\\": "src/"
+            "Orwallet\\FoxtrotSdk\\": "src/",
+            "Orwallet\\FoxtrotSdk\\Tests\\": "tests/"
         }
     },
     "authors": [
@@ -16,7 +20,9 @@
         }
     ],
     "minimum-stability": "stable",
-    "require": {},
+    "require": {
+        "guzzlehttp/guzzle": "^7.2"
+    },
     "extra": {
         "laravel": {
             "providers": [
@@ -25,6 +31,11 @@
             "aliases": {
                 "Foxtrot": "Orwallet\\FoxtrotSdk\\Facade\\Foxtrot"
             }
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
         }
     }
 }

@@ -2,8 +2,6 @@
 
 namespace Orwallet\FoxtrotSdk;
 
-use Illuminate\Support\Arr;
-
 class ErrorCodes
 {
     public static $codes = [

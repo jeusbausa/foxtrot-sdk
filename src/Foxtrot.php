@@ -7,7 +7,6 @@ use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
-use Orwallet\FoxtrotSdk\Constants;
 use Orwallet\FoxtrotSdk\Enums\Currency;
 use Orwallet\FoxtrotSdk\Exception\FoxtrotSolutionException;
 
@@ -48,10 +47,10 @@ class Foxtrot
     /**
      * Set custom http headers
      *
-     * @param array  $headers
+     * @param array $headers
      * @return self
      */
-    public function setHeaders(array $headers): self
+    public function setHeaders(array $headers = []): self
     {
         $this->headers = $headers;
 
@@ -61,10 +60,10 @@ class Foxtrot
     /**
      * Validate deposit request
      *
-     * @param array  $headers
+     * @param array $headers
      * @return self
      */
-    public function validateDeposit(array $payload): self
+    public function validateDeposit(array $payload = []): self
     {
         Validator::make($payload, [
             "address" => "nullable|string",
@@ -102,7 +101,7 @@ class Foxtrot
      * @param array $payload
      * @return self
      */
-    public function validateRefund(array $payload): self
+    public function validateRefund(array $payload = []): self
     {
         Validator::make($payload, [
             "merchant_id" => "required|string",
@@ -124,7 +123,7 @@ class Foxtrot
      * @param array $payload
      * @return self
      */
-    private function setDepositPayload(array $payload): self
+    private function setDepositPayload(array $payload = []): self
     {
         $payload = collect($payload);
 
@@ -173,7 +172,7 @@ class Foxtrot
      * @param array $payload
      * @return self
      */
-    private function setRefundPayload(array $payload): self
+    private function setRefundPayload(array $payload = []): self
     {
         $payload = collect($payload);
 
@@ -200,7 +199,7 @@ class Foxtrot
      * @param array $vault
      * @return void
      */
-    public function setVault(array $vault): void
+    public function setVault(array $vault = []): void
     {
         $validator = Validator::make($vault, [
             "merchant_id" => "required|string",
@@ -326,6 +325,8 @@ class Foxtrot
         string $credit_amount,
         string $redirect_url,
     ): bool {
+        throw_if($this->vault->isEmpty(), Exception::class, "[Foxtrot] vault is not set.");
+
         $request = request();
 
         $is_valid = $request->input("md5Info") === md5(
