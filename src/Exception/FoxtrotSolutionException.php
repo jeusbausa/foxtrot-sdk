@@ -5,7 +5,7 @@ namespace Orwallet\FoxtrotSdk\Exception;
 use Exception;
 use Illuminate\Http\Client\Response;
 
-class FoxtrotFailedResponseException extends Exception
+class FoxtrotSolutionException extends Exception
 {
     public $request;
 

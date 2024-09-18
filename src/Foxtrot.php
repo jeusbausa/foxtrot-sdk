@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 use Orwallet\FoxtrotSdk\Constants;
 use Orwallet\FoxtrotSdk\Enums\Currency;
-use Orwallet\FoxtrotSdk\Exception\FoxtrotFailedResponseException;
+use Orwallet\FoxtrotSdk\Exception\FoxtrotSolutionException;
 
 class Foxtrot
 {
@@ -203,7 +203,7 @@ class Foxtrot
 
         throw_if(
             !$response->ok(),
-            FoxtrotFailedResponseException::class,
+            FoxtrotSolutionException::class,
             $this->payload,
             $response,
             $response_object?->message || "Unexpected error occurred, please try again later",
@@ -217,7 +217,7 @@ class Foxtrot
 
         throw_if(
             $response->ok() && (!$is_success && !$is_processing),
-            FoxtrotFailedResponseException::class,
+            FoxtrotSolutionException::class,
             $this->payload,
             $response,
             "{$response_object->message} ($response_object->code)",
@@ -241,7 +241,7 @@ class Foxtrot
 
         throw_if(
             !$response->ok(),
-            FoxtrotFailedResponseException::class,
+            FoxtrotSolutionException::class,
             $this->payload,
             $response,
             $response_object?->message || "Unexpected error occurred, please try again later",
@@ -249,7 +249,7 @@ class Foxtrot
 
         throw_if(
             $response->ok() && $response_object->refundStatus === Constants::REFUND_FAILED,
-            FoxtrotFailedResponseException::class,
+            FoxtrotSolutionException::class,
             $this->payload,
             $response,
             "{$response_object->message} ($response_object->refundStatus)",

@@ -127,7 +127,7 @@ class ErrorCodes
     ];
 
     /**
-     * Undocumented function
+     * Check if the response code is fixable and ensure it is not marked as failed
      *
      * @param  string  $code
      * @return bool
