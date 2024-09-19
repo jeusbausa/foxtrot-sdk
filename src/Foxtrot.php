@@ -104,7 +104,6 @@ class Foxtrot
     public function validateRefund(array $payload = []): self
     {
         Validator::make($payload, [
-            "merchant_id" => "required|string",
             "order_no" => "required|string",
             "amount" => "required|string",
             "signature" => "required|string",
