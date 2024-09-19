@@ -78,7 +78,7 @@ class Foxtrot
             "shipping_first_name" => "nullable|string",
             "shipping_last_name" => "nullable|string",
             "shipping_email" => "nullable|string",
-            "amount" =>  "required|string",
+            "amount" =>  "required|numeric",
             "currency" => "required|string",
             "card_number" => "required|string",
             "card_exp_month" => "required|string",
